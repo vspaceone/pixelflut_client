@@ -32,9 +32,9 @@ print("W:", W)
 print("H: ", H)
 
 image = np.zeros((H,W,3), np.uint8)
-for x in range(0,H,4):
-    print(x)
-    for y in tqdm.tqdm(range(1200,W,4)):
+
+for x in tqdm.tqdm(range(0,H,4)):
+    for y in range(0,W,4):
         image[x,y] = hextofloats(f"#{getpx(s,y,x)}")
 
 cv2.imwrite(imagefile, image)
