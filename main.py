@@ -1,6 +1,7 @@
 import sys
 import cv2
 import socket
+import tqdm
 
 imagefile = sys.argv[1]
 server = sys.argv[2]
@@ -11,7 +12,6 @@ positionY = int(sys.argv[5])
 print("Server: ", server)
 print("Port:   ", port)
 
-print(f"Loading image {imagefile}...")
 image = cv2.imread(imagefile, cv2.IMREAD_UNCHANGED)
 print("Loaded")
 
@@ -26,8 +26,10 @@ print(image.shape)
 W,H,C = image.shape
 
 s = socket.create_connection((server,port))
+
+print(f"Loading image {imagefile}...")
 packet = ""
-for x in range(0,W):
+for x in tqdm.tqdm(range(0,W)):
     for y in range(0,H):
         r = image[x,y,0]
         g = image[x,y,1]
@@ -38,5 +40,6 @@ for x in range(0,W):
 print("Packet:")
 print(packet)
 
+print("Sending to server....")
 while True:
     s.sendall(str.encode(packet))
