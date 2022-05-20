@@ -6,8 +6,7 @@ import tqdm
 imagefile = sys.argv[1]
 server = sys.argv[2]
 port = int(sys.argv[3])
-positionX = int(sys.argv[4])
-positionY = int(sys.argv[5])
+
 
 print("Server: ", server)
 print("Port:   ", port)
