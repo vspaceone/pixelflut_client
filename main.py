@@ -31,15 +31,13 @@ print(f"Loading image {imagefile}...")
 packet = ""
 for x in tqdm.tqdm(range(0,W)):
     for y in range(0,H):
-        r = image[x,y,0]
-        g = image[x,y,1]
-        b = image[x,y,2]
-        a = image[x,y,3]
+        r,g,b,a = image[x,y,0],image[x,y,1],image[x,y,2],image[x,y,3]
         if a != 0:
             packet += px(s,y,x, '%02x%02x%02x' % (r, g, b))
 print("Packet:")
 print(packet)
 
-print("Sending to server....")
+print("Sending to server... (endless)")
+print("Strg-C to cancel")
 while True:
     s.sendall(str.encode(packet))
