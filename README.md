@@ -17,7 +17,6 @@ source venv/bin/activate
 ```
 
 
-
 ## Get Image
 ```
 source venv/bin/activate
