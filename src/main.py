@@ -14,13 +14,6 @@ print("Port:   ", port)
 image = cv2.imread(imagefile, cv2.IMREAD_UNCHANGED)
 print("Loaded")
 
-def px(socket, x, y, c):
-    return f"PX {x} {y} {c}\n"
-
-def size(socket):
-    socket.sendall(str.encode("SIZE"))
-    size = socket.recv(1024).decode('utf-8')
-    print(size)
 print(image.shape)
 W,H,C = image.shape
 
